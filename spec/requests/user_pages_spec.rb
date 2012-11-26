@@ -35,7 +35,13 @@ describe "UserPages" do
 		describe "with valid information" do
 
 			it "should create a user" do
-			
+				old_count = User.count
+				fill_in "Name",					with: "Example User"
+				fill_in "Email",				with: "user@example.com"
+				fill_in "Password",			with: "foobar"
+				fill_in "Confirmation", with: "foobar"
+				new_count = User.count
+				new_count.should == old_count + 1
 			end
 		end
 	end
